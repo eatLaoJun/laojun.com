@@ -1,0 +1,301 @@
+---
+import { siteConfig } from "../config";
+import { url } from "../utils/url-utils";
+
+const description = "写技术笔记，做 Agent 和有趣的实验。";
+const year = new Date().getFullYear();
+const links = [
+	{ label: "博客", href: url("/blog/"), icon: "M5 4h14v16H5zM8 8h8m-8 4h8m-8 4h5" },
+	{ label: "归档", href: url("/archive/"), icon: "M4 8h16V4H4zm2 0v12h12V8m-8 4h4" },
+	{ label: "关于", href: url("/about/"), icon: "M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM5 20a7 7 0 0 1 14 0" },
+	{ label: "GitHub", href: "https://github.com/eatLaoJun", icon: "m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" },
+];
+---
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="theme-color" content="#061013" />
+		<meta name="description" content={description} />
+		<link rel="icon" href={url("/favicon/favicon-dark-32.png")} />
+		<title>{siteConfig.title} | Notes &amp; Experiments</title>
+	</head>
+	<body class="portal">
+		<canvas class="ink" data-ink aria-hidden="true"></canvas>
+		<main class="stage" data-ink-surface aria-labelledby="home-title">
+			<div class="intro">
+				<p class="kicker"><span aria-hidden="true"></span> NOTES / EXPERIMENTS</p>
+				<h1 id="home-title">{siteConfig.title}</h1>
+				<p class="description">{description}</p>
+				<p class="hint" aria-hidden="true">按住并拖动，让光流动</p>
+			</div>
+		</main>
+		<footer class="footer">
+			<nav class="entries" aria-label="站点导航">
+				{links.map(({ label, href, icon }) => (
+					<a class="entry" href={href} data-no-swup>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+							stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d={icon} />
+						</svg>
+						{label}
+					</a>
+				))}
+			</nav>
+			<p class="signature">&copy; {year} {siteConfig.title}</p>
+		</footer>
+	</body>
+</html>
+
+<script>
+	import { createLandingFluid } from "../scripts/landing-fluid";
+
+	const canvas = document.querySelector<HTMLCanvasElement>("[data-ink]");
+	const surface = document.querySelector<HTMLElement>("[data-ink-surface]");
+	if (canvas && surface) {
+		const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let engine: ReturnType<typeof createLandingFluid>;
+		let attempted = false;
+
+		const syncMotion = () => {
+			if (!attempted && !preference.matches) {
+				attempted = true;
+				engine = createLandingFluid(canvas, surface);
+			}
+			const enabled = Boolean(engine) && !preference.matches;
+			document.body.toggleAttribute("data-ink-ready", enabled);
+			engine?.setPaused(!enabled || document.hidden);
+		};
+
+		preference.addEventListener("change", syncMotion);
+		document.addEventListener("visibilitychange", syncMotion);
+		window.addEventListener("pageshow", syncMotion);
+		window.addEventListener("pagehide", () => engine?.setPaused(true));
+		window.addEventListener("focus", syncMotion);
+		window.addEventListener("blur", () => engine?.setPaused(true));
+		canvas.addEventListener("webglcontextlost", () => {
+			engine?.setPaused(true);
+			engine = undefined;
+			document.body.removeAttribute("data-ink-ready");
+		});
+		syncMotion();
+	}
+</script>
+
+<style>
+	html {
+		color-scheme: dark;
+		background: #061013;
+	}
+
+	.portal {
+		--paper: #effbf7;
+		--secondary: #acbdbb;
+		position: relative;
+		isolation: isolate;
+		display: grid;
+		grid-template-rows: 1fr auto;
+		min-height: 100vh;
+		min-height: 100svh;
+		margin: 0;
+		color: var(--paper);
+		font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+		background:
+			radial-gradient(ellipse at 28% 29%, #163332 0%, transparent 49%),
+			radial-gradient(ellipse at 78% 56%, #192a3b 0%, transparent 53%),
+			linear-gradient(155deg, #0b181a, #050a0d 76%);
+	}
+
+	.ink {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 650ms ease;
+	}
+
+	.portal[data-ink-ready] .ink {
+		opacity: 1;
+	}
+
+	.stage,
+	.footer {
+		position: relative;
+	}
+
+	.stage {
+		display: grid;
+		place-items: center;
+		min-height: 23rem;
+		padding: clamp(3.5rem, 12vh, 8rem) 1.25rem 3.75rem;
+		text-align: center;
+		cursor: default;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+
+	.portal[data-ink-ready] .stage {
+		touch-action: pinch-zoom;
+	}
+
+	.intro {
+		position: relative;
+		margin-top: -5vh;
+		animation: arrive 650ms ease-out both;
+	}
+
+	.kicker {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.6rem;
+		margin: 0;
+		color: #b6cbc6;
+		font: 500 0.875rem / 1.5 "Cascadia Mono", Consolas, monospace;
+		letter-spacing: 0.18em;
+	}
+
+	.kicker span {
+		width: 1.25rem;
+		height: 1px;
+		background: #82d9c8;
+	}
+
+	h1 {
+		margin: 0.07em 0 0;
+		color: var(--paper);
+		font-family: "Trebuchet MS", "Avenir Next", sans-serif;
+		font-size: clamp(4.75rem, 14.2vw, 11rem);
+		font-weight: 700;
+		line-height: 1.08;
+		letter-spacing: -0.065em;
+	}
+
+	@supports (background-clip: text) {
+		h1 {
+			background: linear-gradient(115deg, #f4fff9 26%, #94e3d0 49%, #f4fff9 72%);
+			background-size: 220% 100%;
+			background-clip: text;
+			color: transparent;
+			animation: shimmer 13s ease-in-out infinite alternate;
+		}
+	}
+
+	.description {
+		margin: 1.3rem 0 0;
+		color: #d3e1de;
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
+		line-height: 1.8;
+		text-wrap: balance;
+		text-shadow: 0 1px 14px #071113;
+	}
+
+	.hint {
+		position: absolute;
+		inset-inline: 0;
+		margin: 0.85rem 0 0;
+		color: var(--secondary);
+		font-size: 0.875rem;
+		visibility: hidden;
+		text-shadow: 0 1px 8px #071113;
+	}
+
+	.portal[data-ink-ready] .hint {
+		visibility: visible;
+	}
+
+	.footer {
+		padding: 0 1.25rem max(1.45rem, env(safe-area-inset-bottom));
+		text-align: center;
+	}
+
+	.entries {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.65rem;
+	}
+
+	.entry {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		border: 1px solid #d4fff936;
+		border-radius: 999px;
+		background: #152325a8;
+		backdrop-filter: blur(8px);
+		color: var(--paper);
+		font-size: 0.875rem;
+		text-decoration: none;
+		transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+	}
+
+	.entry:hover,
+	.entry:focus-visible {
+		transform: translateY(-2px);
+		border-color: #91dcca;
+		background: #23413f;
+	}
+
+	.entry:focus-visible {
+		outline: 2px solid #baf7e7;
+		outline-offset: 3px;
+	}
+
+	.entry svg {
+		width: 1.125rem;
+		height: 1.125rem;
+		flex: none;
+		color: #a4dfd4;
+	}
+
+	.signature {
+		max-width: 26rem;
+		margin: 1.25rem auto 0;
+		padding-top: 0.8rem;
+		border-top: 1px solid #b7e1d82b;
+		color: var(--secondary);
+		font-size: 0.8125rem;
+	}
+
+	@keyframes arrive {
+		from { opacity: 0; transform: translateY(0.65rem); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes shimmer {
+		to { background-position: 100% 0; }
+	}
+
+	@media (max-width: 36rem) {
+		.entries {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			max-width: 19rem;
+			margin-inline: auto;
+		}
+	}
+
+	@media (max-height: 30rem) {
+		.stage {
+			min-height: 18rem;
+			padding-block: 2.5rem 3.5rem;
+		}
+
+		.portal[data-ink-ready] .stage {
+			touch-action: auto;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.intro, h1 { animation: none; }
+		.ink, .entry { transition: none; }
+		.entry:hover, .entry:focus-visible { transform: none; }
+	}
+</style>
