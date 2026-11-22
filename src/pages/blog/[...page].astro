@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Pagination from "../../components/control/Pagination.astro";
 import PostPage from "../../components/PostPage.astro";
+import SportMasthead from "../../components/SportMasthead.astro";
 import { PAGE_SIZE } from "../../constants/constants";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "../../utils/content-utils";
@@ -14,10 +15,10 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 
-const len = page.data.length;
 ---
 
-<MainGridLayout title="Blog">
-    <PostPage page={page}></PostPage>
-    <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+<MainGridLayout title="博客" description="LaoJun 的技术笔记与数字实验。">
+	<SportMasthead label="VOL. 01 / TECH JOURNAL" subtitle="技术笔记与个人实验" />
+	<PostPage page={page} />
+	{page.lastPage > 1 && <Pagination class="mx-auto my-6" page={page} basePath="/blog/" />}
 </MainGridLayout>

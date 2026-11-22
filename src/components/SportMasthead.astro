@@ -1,0 +1,86 @@
+---
+import { profileConfig } from "../config";
+import ImageWrapper from "./misc/ImageWrapper.astro";
+
+interface Props {
+	label: string;
+	subtitle: string;
+}
+
+const { label, subtitle } = Astro.props;
+---
+
+<header class:list={["sport-masthead", { "has-portrait": Boolean(profileConfig.avatar) }]}>
+	<div class="masthead-copy">
+		<p class="sport-kicker">{label}</p>
+		<h1>{profileConfig.name}</h1>
+		<p class="masthead-subtitle">{subtitle}</p>
+	</div>
+	{profileConfig.avatar && <div class="masthead-portrait">
+		<ImageWrapper src={profileConfig.avatar} alt={`${profileConfig.name} 的头像`} position="center 40%" class="h-full" />
+	</div>}
+</header>
+
+<style>
+	.sport-masthead {
+		position: relative;
+		isolation: isolate;
+		display: grid;
+		min-height: clamp(14.5rem, 28vw, 21rem);
+		margin-top: clamp(1rem, 3vw, 1.65rem);
+		border-bottom: 1px solid var(--sport-line);
+		background: repeating-linear-gradient(132deg, transparent 0 37px, var(--sport-stripe) 38px 39px, transparent 40px 62px);
+	}
+	.has-portrait {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 42%);
+	}
+	.masthead-copy {
+		z-index: 1;
+		align-self: center;
+		min-width: 0;
+		padding-block: 1rem;
+	}
+	h1 {
+		width: fit-content;
+		margin: .35rem 0 .65rem -.12rem;
+		font: italic 900 clamp(4.25rem, 15vw, 10.25rem) / .83 var(--sport-display);
+		letter-spacing: -.04em;
+		text-transform: uppercase;
+	}
+	.masthead-subtitle {
+		color: var(--sport-copy);
+		font-size: clamp(.85rem, 2.15vw, 1rem);
+		letter-spacing: .1em;
+	}
+	.masthead-portrait {
+		position: relative;
+		border-top: 1px solid var(--sport-line);
+	}
+	.masthead-portrait :global(.h-full) {
+		position: absolute;
+		inset: 0;
+	}
+	.masthead-portrait :global(img) {
+		filter: saturate(.87) contrast(1.04);
+	}
+	.masthead-portrait::after {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(90deg, var(--page-bg), transparent 46%),
+			linear-gradient(0deg, var(--page-bg), transparent 28%);
+		content: "";
+		pointer-events: none;
+	}
+	@media (max-width: 34rem) {
+		.has-portrait {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 47%);
+		}
+		.masthead-copy {
+			text-shadow: 0 2px 14px var(--page-bg);
+		}
+		.masthead-subtitle {
+			letter-spacing: .04em;
+		}
+	}
+</style>

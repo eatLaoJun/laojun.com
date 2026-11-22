@@ -9,6 +9,10 @@ const sortedPostsList = await getSortedPostsList();
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
+    <header class="sport-heading-rule">
+		<p class="sport-kicker">INDEX / TECH JOURNAL</p>
+		<h1 class="sport-heading">{i18n(I18nKey.archive)}</h1>
+	</header>
+	<ArchivePanel sortedPosts={sortedPostsList} client:only="svelte" />
 </MainGridLayout>
 
