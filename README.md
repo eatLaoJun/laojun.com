@@ -1,99 +1,74 @@
-# 🍥Fuwari  
-![Node.js >= 20](https://img.shields.io/badge/node.js-%3E%3D20-brightgreen) 
-![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue) 
-[![DeepWiki](https://img.shields.io/badge/DeepWiki-saicaca%2Ffuwari-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAyCAYAAAAnWDnqAAAAAXNSR0IArs4c6QAAA05JREFUaEPtmUtyEzEQhtWTQyQLHNak2AB7ZnyXZMEjXMGeK/AIi+QuHrMnbChYY7MIh8g01fJoopFb0uhhEqqcbWTp06/uv1saEDv4O3n3dV60RfP947Mm9/SQc0ICFQgzfc4CYZoTPAswgSJCCUJUnAAoRHOAUOcATwbmVLWdGoH//PB8mnKqScAhsD0kYP3j/Yt5LPQe2KvcXmGvRHcDnpxfL2zOYJ1mFwrryWTz0advv1Ut4CJgf5uhDuDj5eUcAUoahrdY/56ebRWeraTjMt/00Sh3UDtjgHtQNHwcRGOC98BJEAEymycmYcWwOprTgcB6VZ5JK5TAJ+fXGLBm3FDAmn6oPPjR4rKCAoJCal2eAiQp2x0vxTPB3ALO2CRkwmDy5WohzBDwSEFKRwPbknEggCPB/imwrycgxX2NzoMCHhPkDwqYMr9tRcP5qNrMZHkVnOjRMWwLCcr8ohBVb1OMjxLwGCvjTikrsBOiA6fNyCrm8V1rP93iVPpwaE+gO0SsWmPiXB+jikdf6SizrT5qKasx5j8ABbHpFTx+vFXp9EnYQmLx02h1QTTrl6eDqxLnGjporxl3NL3agEvXdT0WmEost648sQOYAeJS9Q7bfUVoMGnjo4AZdUMQku50McDcMWcBPvr0SzbTAFDfvJqwLzgxwATnCgnp4wDl6Aa+Ax283gghmj+vj7feE2KBBRMW3FzOpLOADl0Isb5587h/U4gGvkt5v60Z1VLG8BhYjbzRwyQZemwAd6cCR5/XFWLYZRIMpX39AR0tjaGGiGzLVyhse5C9RKC6ai42ppWPKiBagOvaYk8lO7DajerabOZP46Lby5wKjw1HCRx7p9sVMOWGzb/vA1hwiWc6jm3MvQDTogQkiqIhJV0nBQBTU+3okKCFDy9WwferkHjtxib7t3xIUQtHxnIwtx4mpg26/HfwVNVDb4oI9RHmx5WGelRVlrtiw43zboCLaxv46AZeB3IlTkwouebTr1y2NjSpHz68WNFjHvupy3q8TFn3Hos2IAk4Ju5dCo8B3wP7VPr/FGaKiG+T+v+TQqIrOqMTL1VdWV1DdmcbO8KXBz6esmYWYKPwDL5b5FA1a0hwapHiom0r/cKaoqr+27/XcrS5UwSMbQAAAABJRU5ErkJggg==)](https://deepwiki.com/saicaca/fuwari)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari?ref=badge_shield&issueType=license)
+# LaoJun 的个人博客
 
-A static blog template built with [Astro](https://astro.build).
+用 Astro 搭建的个人站，写技术笔记，也记下一些生活里的想法。这个仓库从 Fuwari 改起，文章用 Markdown 管理，构建后是静态网站，不需要数据库或后台管理。
 
-[**🖥️ Live Demo (Vercel)**](https://fuwari.vercel.app)
+![LaoJun 博客的 WebGL 流体首页](src/content/posts/webgl-fluid/homepage.webp)
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+## 站点内容
 
-🌏 README in
-[**中文**](https://github.com/saicaca/fuwari/blob/main/docs/README.zh-CN.md) /
-[**日本語**](https://github.com/saicaca/fuwari/blob/main/docs/README.ja.md) /
-[**한국어**](https://github.com/saicaca/fuwari/blob/main/docs/README.ko.md) /
-[**Español**](https://github.com/saicaca/fuwari/blob/main/docs/README.es.md) /
-[**ไทย**](https://github.com/saicaca/fuwari/blob/main/docs/README.th.md) /
-[**Tiếng Việt**](https://github.com/saicaca/fuwari/blob/main/docs/README.vi.md) /
-[**Bahasa Indonesia**](https://github.com/saicaca/fuwari/blob/main/docs/README.id.md) (Provided by the community and may not always be up-to-date)
+- `/`：WebGL 流体首页。电脑上按住鼠标左键拖动，手机上按住并滑动，就能和光影互动。
+- `/blog/`：运动杂志风格的文章列表。右上角可切换浅色和深色，浏览器会记住选择。
+- `/archive/`：按年份查看文章，也可以通过文章上的分类和标签筛选。
+- `/about/`：个人介绍和建站初衷。
 
-## ✨ Features
+目前收录了 [WebGL 流体教程](src/content/posts/webgl-fluid.md) 和 [《我为什么越来越喜欢 C 罗》](src/content/posts/ronaldo.md)。后续想在这个站里记录 Agent 实验和空间设计方面的尝试。
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [x] Search functionality with [Pagefind](https://pagefind.app/)
-- [x] [Markdown extended features](https://github.com/saicaca/fuwari?tab=readme-ov-file#-markdown-extended-syntax)
-- [x] Table of contents
-- [x] RSS feed
+## 本地启动
 
-## 🚀 Getting Started
+建议使用 Node.js 22，项目锁定的包管理器版本为 pnpm 9.14.4。
 
-1. Create your blog repository:
-    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-    - Or run one of the following commands:
-       ```sh
-       npm create fuwari@latest
-       yarn create fuwari
-       pnpm create fuwari@latest
-       bun create fuwari@latest
-       deno run -A npm:create-fuwari@latest
-       ```
-2. To edit your blog locally, clone your repository, run `pnpm install` to install dependencies.
-    - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
-3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
-
-## 📝 Frontmatter of Posts
-
-```yaml
----
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
-draft: false
-lang: jp      # Set only if the post's language differs from the site's language in `config.ts`
----
+```sh
+git clone https://github.com/eatLaoJun/laojun.com.git
+cd laojun.com
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-## 🧩 Markdown Extended Syntax
+打开 [首页](http://localhost:4321/) 或直接进入 [博客列表](http://localhost:4321/blog/)。如果 Windows PowerShell 拦截了 `pnpm.ps1`，把命令里的 `pnpm` 换成 `pnpm.cmd`。
 
-In addition to Astro's default support for [GitHub Flavored Markdown](https://github.github.com/gfm/), several extra Markdown features are included:
+## 发布文章
 
-- Admonitions ([Preview and Usage](https://fuwari.vercel.app/posts/markdown-extended/#admonitions))
-- GitHub repository cards ([Preview and Usage](https://fuwari.vercel.app/posts/markdown-extended/#github-repository-cards))
-- Enhanced code blocks with Expressive Code ([Preview](https://fuwari.vercel.app/posts/expressive-code/) / [Docs](https://expressive-code.com/))
+在仓库根目录运行 `pnpm new-post my-first-post`，然后编辑生成的 `src/content/posts/my-first-post.md`。也可以直接在 [文章目录](src/content/posts/) 新建 Markdown 文件：
 
-## ⚡ Commands
+```markdown
+---
+title: "我的第一篇技术笔记"
+published: 2026-11-22
+description: "在这里写文章摘要。"
+draft: false
+---
 
-All commands are run from the root of the project, from a terminal:
+从这里开始写正文。
+```
 
-| Command                    | Action                                              |
-|:---------------------------|:----------------------------------------------------|
-| `pnpm install`             | Installs dependencies                               |
-| `pnpm dev`                 | Starts local dev server at `localhost:4321`         |
-| `pnpm build`               | Build your production site to `./dist/`             |
-| `pnpm preview`             | Preview your build locally, before deploying        |
-| `pnpm check`               | Run checks for errors in your code                  |
-| `pnpm format`              | Format your code using Biome                        |
-| `pnpm new-post <filename>` | Create a new post                                   |
-| `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check`    |
-| `pnpm astro --help`        | Get help using the Astro CLI                        |
+- `title` 和 `published` 是必填字段。正文图片可放在文章旁边，用相对路径引用。
+- `image` 设置封面；想让封面只出现在列表、不出现在正文顶部，可加 `showCover: false`。
+- `tags` 和 `category` 可以手填。留空时，站点会按标题和摘要里的关键词推断；分类没匹配时使用「技术笔记」。
+- `draft: true` 的文章仅在开发模式可见，不会进入正式构建。
 
-## ✏️ Contributing
+## 常改的位置
 
-Check out the [Contributing Guide](https://github.com/saicaca/fuwari/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.
+| 想改什么 | 在哪里改 |
+| --- | --- |
+| 站名、导航、头像 | [`src/config.ts`](src/config.ts) |
+| 关于页正文 | [`src/content/spec/about.md`](src/content/spec/about.md) |
+| 博客配色和共用样式 | [`src/styles/sport.css`](src/styles/sport.css) |
+| 流体首页的内容和布局 | [`src/pages/index.astro`](src/pages/index.astro) |
+| 自动分类与标签规则 | [`src/utils/post-taxonomy.ts`](src/utils/post-taxonomy.ts) |
 
-## 📄 License
+## 构建与部署
 
-This project is licensed under the MIT License.
+```sh
+pnpm check
+pnpm build
+pnpm preview
+```
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari?ref=badge_large&issueType=license)
+`pnpm build` 会生成 `dist/` 和 Pagefind 搜索索引。想测试真实搜索结果，请在构建后用 `pnpm preview`，开发模式使用的是示例结果。
+
+部署时把 [`astro.config.mjs`](astro.config.mjs) 的 `site` 改成自己的正式域名，再将 `dist/` 发布到静态托管平台。
+
+## 致谢与许可
+
+- 博客基于 [Fuwari](https://github.com/saicaca/fuwari) 和 [Astro](https://astro.build)，首页使用 Pavel Dobryakov 的 [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)。
+- 代码使用 [MIT 许可证](LICENSE)。本站原创文章按 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 授权；第三方图片不在此授权范围内。
