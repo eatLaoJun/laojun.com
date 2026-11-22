@@ -1,6 +1,6 @@
 ---
 title: "在 Astro 首页接入 WebGL 流体特效"
-published: 2026-11-22
+published: 2026-10-22
 description: "从鼠标和触屏体验到 Astro 接入，拆解本站的 WebGL 流体背景，并说明默认参数和常见问题。"
 image: "./webgl-fluid/homepage.webp"
 lang: "zh_CN"
