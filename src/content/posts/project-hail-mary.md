@@ -24,8 +24,20 @@ lang: "zh_CN"
 
 ![格雷斯坐在 Rocky 身旁，一起望向远处](./project-hail-mary/together.webp)
 
-我很喜欢这个圆满的结局，不想替它换一个更遗憾的版本。当然，我还是会想到前往天仓五途中死去的两名队友、在实验中牺牲的科学家，还有 Rocky 失去的同伴。只是散场的时候，留在我心里的更多是暖意。我会给它 **8.5 / 10**。
+我就是喜欢这种 Happy Ending。我会给它 **8.5 / 10**。
 
-*配图为 Amazon MGM Studios 宣传剧照，来源：[SINEGANG.ph](https://www.sinegang.ph/filmreviews/project-hail-mary-za)、[SYFY](https://www.syfy.com/syfy-wire/project-hail-marys-book-changes-from-andy-weirs-novel-to-movie)。配图不适用本站文章的开放许可。*
+## 电影截图
+
+<div class="post-photo-gallery">
+
+![飞船外的星球上翻涌着绿色和橙色的云层](./project-hail-mary/gallery-01.webp)
+
+![格雷斯和透明舱里的 Rocky 并排坐在雪景前](./project-hail-mary/gallery-02.webp)
+
+![格雷斯靠在 Rocky 的透明舱旁，转头望向一侧](./project-hail-mary/gallery-03.webp)
+
+![格雷斯背对镜头，面向台阶上的外星学生](./project-hail-mary/gallery-04.webp)
+
+</div>
 
 *参考影评：[21 世纪经济报道](https://m.21jingji.com/article/20260418/29433428b5f7a04ee16875c605c8b054.html)、[美联社](https://apnews.com/article/project-hail-mary-movie-review-56616d8903dbd5c4339e1ca193e62013)。*
