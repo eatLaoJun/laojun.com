@@ -1,0 +1,50 @@
+---
+import { siteConfig } from "../config";
+import { url } from "../utils/url-utils";
+---
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<link rel="icon" href={url("/favicon/favicon-dark-32.png")} />
+		<title>Agent | {siteConfig.title}</title>
+	</head>
+	<body>
+		<main aria-labelledby="agent-title">
+			<h1 id="agent-title">Agent</h1>
+			<p>独立 Agent 项目，尚未上线。</p>
+			<a href={url("/")}>返回首页</a>
+		</main>
+	</body>
+</html>
+
+<style>
+	body {
+		min-height: 100vh;
+		min-height: 100svh;
+		display: grid;
+		place-items: center;
+		margin: 0;
+		color-scheme: dark;
+		color: #effbf7;
+		background: radial-gradient(ellipse at 28% 29%, #163332, #061013 68%);
+		font: 1rem/1.6 "Avenir Next", "Segoe UI", "Microsoft YaHei", sans-serif;
+	}
+	main {
+		padding: 1.5rem;
+		text-align: center;
+	}
+	h1 {
+		margin: 0;
+		font: 700 clamp(3rem, 10vw, 5rem)/1.1 "Trebuchet MS", sans-serif;
+	}
+	p {
+		color: #acbdbb;
+	}
+	a {
+		color: #a4dfd4;
+		text-underline-offset: 0.2em;
+	}
+</style>

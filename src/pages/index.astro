@@ -9,6 +9,7 @@ const links = [
 	{ label: "归档", href: url("/archive/"), icon: "M4 8h16V4H4zm2 0v12h12V8m-8 4h4" },
 	{ label: "关于", href: url("/about/"), icon: "M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM5 20a7 7 0 0 1 14 0" },
 	{ label: "GitHub", href: "https://github.com/eatLaoJun", icon: "m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" },
+	{ label: "Agent", href: url("/agent/"), icon: "M5 9h14v10H5zM12 9V5m-2 0h4M9 13v2m6-2v2M3 13h2m14 0h2" },
 ];
 ---
 <!doctype html>
@@ -279,6 +280,11 @@ const links = [
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 			max-width: 19rem;
 			margin-inline: auto;
+		}
+
+		.entry:last-child:nth-child(odd) {
+			grid-column: 1 / -1;
+			justify-self: center;
 		}
 	}
 
