@@ -10,6 +10,7 @@
 - `/blog/`：运动杂志风格的文章列表。右上角可切换浅色和深色，浏览器会记住选择。
 - `/archive/`：按年份查看文章，也可以通过文章上的分类和标签筛选。
 - `/about/`：个人介绍和建站初衷。
+- `/agent/`：从首页进入的房间工作台。可以在 2D 和 3D 中布置个人房间，布局保存在当前浏览器。[房间尺寸和后续 Agent 计划](docs/room-studio.md)。
 
 目前收录了 [WebGL 流体教程](src/content/posts/webgl-fluid.md) 和 [《我为什么越来越喜欢 C 罗》](src/content/posts/ronaldo.md)。后续想在这个站里记录 Agent 实验和空间设计方面的尝试。
 
@@ -71,4 +72,5 @@ pnpm preview
 ## 致谢与许可
 
 - 博客基于 [Fuwari](https://github.com/saicaca/fuwari) 和 [Astro](https://astro.build)，首页使用 Pavel Dobryakov 的 [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)。
+- 房间工作台的交互参考 [Hearth Studio](https://github.com/yadneshSalvi/hearth-webmcp)，使用 Three.js 和本项目的房间、家具模型。
 - 代码使用 [MIT 许可证](LICENSE)。本站原创文章按 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 授权；第三方图片不在此授权范围内。

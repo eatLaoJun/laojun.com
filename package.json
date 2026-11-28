@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:server": "node --experimental-sqlite --import tsx server/index.ts",
     "start": "astro dev",
+    "test": "node --experimental-sqlite --experimental-strip-types --test scripts/room-model.test.mjs scripts/room-agent.test.mjs",
     "check": "astro check",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
@@ -27,17 +29,21 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource/barlow-condensed": "^5.3.0",
     "@fontsource/roboto": "^5.2.9",
+    "@hono/node-server": "^2.1.11",
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/fa6-regular": "^1.2.4",
     "@iconify-json/fa6-solid": "^1.2.4",
     "@iconify-json/material-symbols": "^1.2.50",
     "@iconify/svelte": "^4.2.0",
+    "@mariozechner/pi-agent-core": "^0.73.1",
+    "@mariozechner/pi-ai": "^0.73.1",
     "@swup/astro": "^1.7.0",
     "@tailwindcss/typography": "^0.5.19",
     "astro": "5.13.10",
     "astro-expressive-code": "^0.41.4",
     "astro-icon": "^1.1.5",
     "hastscript": "^9.0.1",
+    "hono": "^4.13.23",
     "katex": "^0.16.27",
     "markdown-it": "^14.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -59,6 +65,8 @@
     "stylus": "^0.64.0",
     "svelte": "^5.39.8",
     "tailwindcss": "^3.4.19",
+    "three": "0.187.0",
+    "typebox": "^1.4.7",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0"
   },
@@ -70,8 +78,10 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.16.0",
+    "@types/three": "0.187.0",
     "postcss-import": "^16.1.1",
-    "postcss-nesting": "^13.0.2"
+    "postcss-nesting": "^13.0.2",
+    "tsx": "^4.23.15"
   },
   "packageManager": "pnpm@9.14.4"
 }
